@@ -13,23 +13,27 @@ public class MeshGenerator : MonoBehaviour
     Vector2[] uvs;
 
     Material[] sharedMaterials;
-    public int xSize = 20;
-    public int zSize = 20;
-    
+    public int xSize = 50;
+    public int zSize = 50;
+
+    MeshCollider collidermesh;
+
     Material mat = Resources.Load("Materials/Nasty_CelShading2.mat", typeof(Material)) as Material;
 
     void Start()
     {
         mesh = new Mesh();
-        
-        
+
+        collidermesh = gameObject.AddComponent<MeshCollider>();
         GetComponent<MeshFilter>().mesh = mesh;
-        GetComponent<MeshFilter>().sharedMesh = mesh;
-    
+
+        collidermesh.sharedMesh = mesh;
+
         CreateShape();
         UpdateMesh();
 
-       
+        
+
 
     }
 
@@ -44,7 +48,7 @@ public class MeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                float y = Mathf.PerlinNoise(x * .3f, z * .6f) * 2f;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
@@ -108,17 +112,14 @@ public class MeshGenerator : MonoBehaviour
         mesh.RecalculateNormals();
        
         mesh.RecalculateBounds();
+        collidermesh.sharedMesh = mesh;
+        // MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
 
-     
 
-        MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
-
-        meshCollider.sharedMesh = mesh;
-
-     /*   MeshRenderer rend = gameObject.GetComponent<MeshRenderer>();
-        rend.material = mat;
-        rend.materials = sharedMaterials;
-        */
+        /*   MeshRenderer rend = gameObject.GetComponent<MeshRenderer>();
+           rend.material = mat;
+           rend.materials = sharedMaterials;
+           */
 
 
     }

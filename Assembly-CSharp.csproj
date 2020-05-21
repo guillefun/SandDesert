@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\NastyWizard_CelSobel\Demo\ROTATE.cs" />
+     <Compile Include="Assets\Scripts\FPSCamera.cs" />
      <Compile Include="Assets\Scripts\MeshGenerator.cs" />
+     <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\PostProcessing_Sobel.cs" />
      <None Include="Assets\NastyWizard_CelSobel\CelShadingSobel\Shaders\Post\SobelOutline.shader" />
      <None Include="Assets\NastyWizard_CelSobel\CelShadingSobel\Shaders\CelShading\CelShadingTerrain.shader" />
